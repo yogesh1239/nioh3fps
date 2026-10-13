@@ -43,7 +43,7 @@ The keys and all other settings are in `nioh3fps.ini`, which has a comment for e
 - **Systems the mod adjusts:** some game systems count updates instead of measuring time, which matters once updates follow the frame rate. The mod adjusts every one found in the code: character movement, character timers, input hold timers, turn rate and the time-of-day clock. Simple per-update counters that never read the frame rate cannot be found this way. If something feels faster or slower with the fix on (stamina or Ki regeneration, buffs, hit-stop), compare with F10 and please open an issue.
 - **Co-op:** the automatic switch-off in co-op uses the game's own online-play flag, found by reading the code. It has not yet been confirmed in a live co-op session.
 - **Physics:** physics already follows real time, so it runs a slightly larger step at frame rates below 120.
-- **Frame generation:** generated frames are not counted, so the update rate follows real rendered frames.
+- **Frame generation:** the mod works with frame generation on, but some jitter may remain. Generated frames are not counted, so the update rate follows real rendered frames. Tested with XeSS Frame Generation through OptiScaler: the mod still removes most of the stutter (motion error p95 1.5 ms with the mod, 6.8 ms without), but that is about 1 ms more than with frame generation off (0.6 ms). DLSS Frame Generation has not been tested. For the smoothest result, play with frame generation off.
 
 ## Bug reports
 
