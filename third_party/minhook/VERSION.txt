@@ -1,0 +1,1 @@
+MinHook v1.3.3, commit 9fbd087432700d73fc571118d6a9697a36443d88, from https://github.com/TsudaKageyu/minhook (tag v1.3.3). Unmodified.

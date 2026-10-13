@@ -1,0 +1,13 @@
+build/
+*.o
+*.dll
+*.exe
+*.pkl
+__pycache__/
+*.csv.tmp
+third_party/minhook/build/
+recordings/
+*.cache.pkl
+*.zip
+nioh3fps.log*
+nioh3fps_trace*

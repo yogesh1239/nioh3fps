@@ -1,0 +1,6 @@
+# Review round 3: issues raised against plan v3 (fixed in v4)
+MAJOR1 factor averaging was a no-op (full debt feedback means r = raw dt), and with N>1 a hitch pollutes the history, giving N frames at r=2.0, a burst past the debt cap. Fix: Raw default; Smooth = target + k*(owed-target), k≈0.2; outliers kept out of the history; explicit state updates.
+MAJOR2 copied UNWIND_INFO kept the host's EHANDLER/UHANDLER flags (0x5ad5f8 flags=3, handler 0xb921f8), so the handler resolves against the stub base and jumps to garbage. Fix: Flags=0, SizeOfProlog=0, table on page 1, RtlAddFunctionTable(tbl,n,allocBase).
+MINOR: H1 forwards all 4 args (r9 used at 0x5ad628) and H2 forwards the rax return; replace the FF25 return (unwinder reads it as an epilogue) with mov rax,imm64; jmp rax; MinHook relay/trampolines have no unwind (accepted gap); trace .prev rotation + seqlock + CRC, ~1 MB, LOCALAPPDATA fallback, "any crash" wording; S4.2 metric excludes clamp/reset time; H2 skipped frames OK.
+Verified OK: H2 prologue 7 B with no rip-relative operand and no branches into it; rdx=S at entry; P1/P2 stubs correct (c60=60.0, flags dead, rax dead); nothing corrupts saves (+0x628 never written).
+Simulation scripts: review3/sim.py, sim2.py.
